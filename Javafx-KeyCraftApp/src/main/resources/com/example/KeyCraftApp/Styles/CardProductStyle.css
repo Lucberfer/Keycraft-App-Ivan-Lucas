@@ -1,0 +1,18 @@
+.card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 5px;
+}
+
+.shadow {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.5), 5, 0, 0, 0);
+}
+
+.btn {
+    -fx-background-color: linear-gradient(to bottom right, #0f6789, #2e2e2e); /* Azul a gris oscuro */
+    -fx-text-fill: #ffffff;
+}
+
+.btn:hover {
+    -fx-background-color: linear-gradient(to bottom right, #0d3b70, #0a4961); /* Azul oscuro */
+    -fx-cursor: hand;
+}
