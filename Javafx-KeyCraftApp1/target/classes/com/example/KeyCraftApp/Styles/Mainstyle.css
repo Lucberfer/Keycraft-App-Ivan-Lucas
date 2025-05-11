@@ -1,0 +1,98 @@
+.header {
+    -fx-background-color: linear-gradient(to bottom right, #0f6789, #2e2e2e); /* Azul a gris oscuro */
+    -fx-alignment: center;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.header Label {
+    -fx-text-fill: #ffffff;
+}
+
+.nav-form {
+    -fx-background-color: linear-gradient(to bottom right, #0f6789, #2e2e2e); /* Azul a gris oscuro */
+}
+
+.nav-form Label {
+    -fx-text-fill: #ffffff;
+}
+
+.nav-btn {
+    -fx-background-color: transparent;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 0.5;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+}
+
+.nav-btn:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;
+}
+
+.log-out {
+    -fx-background-color: #0f6789; /* Azul */
+    -fx-padding: 5px;
+    -fx-cursor: hand;
+    -fx-background-radius: 50px;
+}
+
+.log-out:hover {
+    -fx-background-color: #0a4961; /* Azul más oscuro */
+    -fx-cursor: hand;
+}
+
+.log-out FontAwesomeIconView {
+    -fx-fill: #ffffff;
+}
+
+.shadow {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.5), 5, 0, 0, 0);
+}
+
+.white-background {
+    -fx-background-color: #ffffff;
+}
+
+.radius {
+    -fx-background-radius: 8px;
+}
+
+.transparent {
+    -fx-background-color: transparent;
+}
+
+.table-view {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-border-color: linear-gradient(to bottom right, #0f6789, #2e2e2e); /* Azul a gris oscuro */
+    -fx-background-radius: 5px;
+    -fx-border-width: 1.5px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(to bottom right, #0f6789, #2e2e2e); /* Azul a gris oscuro */
+    -fx-background-insets: 0 0 0 0;
+    -fx-background-radius: 5px 5px 0 0;
+}
+
+.table-view .column-header, .filter {
+    -fx-background-color: transparent;
+    -fx-size: 40px;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #ffffff;
+}
+
+.btn {
+    -fx-background-color: linear-gradient(to bottom right, #0f6789, #2e2e2e); /* Azul a gris oscuro */
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+}
+
+.btn:hover {
+    -fx-background-color: linear-gradient(to bottom right, #0d3b70, #0a4961); /* Azul oscuro */
+    -fx-cursor: hand;
+}
