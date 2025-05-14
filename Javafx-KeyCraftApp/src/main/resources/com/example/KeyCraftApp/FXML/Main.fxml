@@ -190,10 +190,10 @@
                      <Label layoutX="14.0" layoutY="79.0" text="Nombre del producto:" />
                      <TextField fx:id="product_name_textfield" layoutX="105.0" layoutY="74.0" prefHeight="30.0" prefWidth="250.0" />
                      <Label layoutX="63.0" layoutY="127.0" text="Tipo:" />
-                     <ComboBox fx:id="type_combobox" layoutX="106.0" layoutY="123.0" prefHeight="30.0" prefWidth="250.0" promptText="Choose Type" />
+                     <ComboBox fx:id="type_combobox" layoutX="106.0" layoutY="123.0" prefHeight="30.0" prefWidth="250.0" promptText="Elegir" />
                      <Label layoutX="435.0" layoutY="27.0" text="Stock:" />
                      <TextField fx:id="stock_textfield" layoutX="482.0" layoutY="23.0" prefHeight="30.0" prefWidth="250.0" promptText="0" />
-                     <Label layoutX="435.0" layoutY="77.0" text="Price:" />
+                     <Label layoutX="435.0" layoutY="77.0" text="Precio:" />
                      <TextField fx:id="price_textfield" layoutX="482.0" layoutY="73.0" prefHeight="30.0" prefWidth="250.0" promptText="\$0.0" />
                      <AnchorPane layoutX="818.0" layoutY="14.0" prefHeight="179.0" prefWidth="188.0">
                         <styleClass>
@@ -203,13 +203,13 @@
                         </styleClass>
                         <ImageView fx:id="display_selected_image" fitHeight="184.0" fitWidth="191.0" layoutX="-6.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      </AnchorPane>
-                     <Button fx:id="choose_image_button" layoutX="866.0" layoutY="207.0" mnemonicParsing="false" styleClass="btn" text="Choose Image" />
-                     <Button fx:id="add_button" layoutX="140.0" layoutY="290.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="87.0" styleClass="btn" text="Add" />
-                     <Button fx:id="update_button" layoutX="275.0" layoutY="290.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="87.0" styleClass="btn" text="Update" />
-                     <Button fx:id="delete_button" layoutX="494.0" layoutY="290.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="87.0" styleClass="btn" text="Delete" />
-                     <Button fx:id="clear_button" layoutX="630.0" layoutY="291.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="87.0" styleClass="btn" text="Clear" />
-                     <Label layoutX="439.0" layoutY="126.0" text="Status:" />
-                     <ComboBox fx:id="status_combobox" layoutX="482.0" layoutY="122.0" prefHeight="30.0" prefWidth="250.0" promptText="Choose Status" />
+                     <Button fx:id="choose_image_button" layoutX="866.0" layoutY="207.0" mnemonicParsing="false" styleClass="btn" text="Subir imagen" />
+                     <Button fx:id="add_button" layoutX="140.0" layoutY="290.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="87.0" styleClass="btn" text="Añadir" />
+                     <Button fx:id="update_button" layoutX="275.0" layoutY="290.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="87.0" styleClass="btn" text="Actualizar" />
+                     <Button fx:id="delete_button" layoutX="494.0" layoutY="290.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="87.0" styleClass="btn" text="Borrar" />
+                     <Button fx:id="clear_button" layoutX="630.0" layoutY="291.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="87.0" styleClass="btn" text="Limpiar" />
+                     <Label layoutX="439.0" layoutY="126.0" text="Estado:" />
+                     <ComboBox fx:id="status_combobox" layoutX="482.0" layoutY="122.0" prefHeight="30.0" prefWidth="250.0" promptText="Elegir" />
                   </AnchorPane>
                   <Separator layoutX="15.0" layoutY="409.0" prefHeight="1.0" prefWidth="1027.0" AnchorPane.bottomAnchor="388.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" />
                </AnchorPane>
@@ -251,12 +251,12 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label layoutX="127.0" layoutY="439.0" text="Cantidad" />
+
                         <TextField fx:id="menu_amount_textfield" layoutX="179.0" layoutY="435.0" onAction="#menuAmount" prefHeight="25.0" prefWidth="161.0" promptText="\$0.0" />
-                        <Label layoutX="128.0" layoutY="471.0" text="Cambio" />
+
                         <Label fx:id="menu_change" layoutX="178.0" layoutY="471.0" prefHeight="17.0" prefWidth="143.0" text="\$0.0" />
                         <Button fx:id="menu_pay_btn" layoutX="23.0" layoutY="509.0" mnemonicParsing="false" onAction="#menuPayBtn" prefHeight="44.0" prefWidth="306.0" styleClass="btn" text="Pagar" />
-                        <Button fx:id="menu_remove_btn" layoutX="19.0" layoutY="586.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="149.0" styleClass="btn" text="Eliminar" />
+                        <Button fx:id="menu_remove_btn" layoutX="19.0" layoutY="586.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="149.0" styleClass="btn" text="Eliminar" onAction="#menuRemoveBtn" />
                         <Button fx:id="menu_receipt_btn" layoutX="187.0" layoutY="586.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="142.0" styleClass="btn" text="Recibo" />
                      </children>
                   </AnchorPane>

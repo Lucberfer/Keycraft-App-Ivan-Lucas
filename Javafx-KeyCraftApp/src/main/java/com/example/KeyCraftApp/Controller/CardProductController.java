@@ -85,7 +85,6 @@ public class CardProductController implements Initializable {
                 preparedStatement.executeUpdate();
             }
 
-
             preparedStatement = connection.prepareStatement(checkAvailable);
             preparedStatement.setString(1, productID);
             resultSet = preparedStatement.executeQuery();
@@ -94,17 +93,17 @@ public class CardProductController implements Initializable {
             }
             if (!check.equals("Disponible") || quantity == 0) {
                 alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error Message");
+                alert.setTitle("Error");
                 alert.setHeaderText(null);
-                alert.setContentText("Something went wrong");
+                alert.setContentText("Error inesperado");
                 alert.showAndWait();
             } else {
 
                 if (checkStck < card_spinner.getValue()) {
                     alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Error Message");
+                    alert.setTitle("Error");
                     alert.setHeaderText(null);
-                    alert.setContentText("Invalid. This product is out of stock");
+                    alert.setContentText("No queda stock.");
                     alert.showAndWait();
                 } else {
                     String insertData = "INSERT INTO Customer (customer_id, product_id, product_name, quantity, price, date, em_username) VALUES(?,?,?,?,?,?,?)";
@@ -136,11 +135,10 @@ public class CardProductController implements Initializable {
                     preparedStatement.setString(8, productID);
                     preparedStatement.executeUpdate();
                     alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Information Message");
+                    alert.setTitle("Mensaje de informacion");
                     alert.setHeaderText(null);
                     alert.setContentText("Añadido con exito");
                     alert.showAndWait();
-
 
                     mainController.menuGetTotal();
                 }

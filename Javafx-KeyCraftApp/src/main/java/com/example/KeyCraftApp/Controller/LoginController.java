@@ -86,9 +86,9 @@ public class LoginController implements Initializable {
                     side_create_account_button.setVisible(true);
                 } else {
                     alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Error Message");
+                    alert.setTitle("Error");
                     alert.setHeaderText(null);
-                    alert.setContentText("Incorrect Username, Question or Answer");
+                    alert.setContentText("Incorrecto");
                     alert.showAndWait();
                 }
             } catch (SQLException e) {
@@ -115,7 +115,7 @@ public class LoginController implements Initializable {
                     UserDetail.setUsername(login_username.getText());
 
                     alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("InformationMessage");
+                    alert.setTitle("Informacion");
                     alert.setHeaderText(null);
                     alert.setContentText("Sesión iniciada");
                     alert.showAndWait();

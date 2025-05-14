@@ -216,7 +216,7 @@ public class MainController implements Initializable {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Invalid :3");
+            alert.setContentText("Invalido");
             alert.showAndWait();
         } else {
             amount = Double.parseDouble(menu_amount_textfield.getText());
@@ -234,7 +234,7 @@ public class MainController implements Initializable {
     public void menuPayBtn() {
         if (tPrice == 0) {
             alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error ");
+            alert.setTitle("Error");
             alert.setHeaderText(null);
             alert.setContentText("Por favor, seleccione su pedido primero");
             alert.showAndWait();
@@ -252,7 +252,7 @@ public class MainController implements Initializable {
                 Date date = new Date();
                 java.sql.Date sqlDate = new java.sql.Date(date.getTime());
                 alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Confirmation Message");
+                alert.setTitle("Confirmar Mensaje");
                 alert.setHeaderText(null);
                 alert.setContentText("¿Estás seguro?");
                 Optional<ButtonType> optional = alert.showAndWait();
@@ -267,7 +267,7 @@ public class MainController implements Initializable {
                     menuShowData();
 
                     alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Information Message");
+                    alert.setTitle("Atencion");
                     alert.setHeaderText(null);
                     alert.setContentText("Ok!");
                     alert.showAndWait();
@@ -276,7 +276,7 @@ public class MainController implements Initializable {
                     menuRestart();
                 } else {
                     alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("Information Message");
+                    alert.setTitle("Atencion");
                     alert.setHeaderText(null);
                     alert.setContentText("Error.");
                     alert.showAndWait();
@@ -609,7 +609,7 @@ public class MainController implements Initializable {
 
     public void getSuccessAlert(String message) {
         alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Success");
+        alert.setTitle("Ok");
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
@@ -673,9 +673,8 @@ public class MainController implements Initializable {
         }
     }
 
-    //@FXML
-    private void menuRemoveBtn(ActionEvent event) {
-        // Obtener el producto seleccionado de la tabla
+    public void menuRemoveBtn() {
+        // Obtener el producto seleccionado de la tabla del carrito
         CustomerModel selectedProduct = menu_table_view.getSelectionModel().getSelectedItem();
 
         if (selectedProduct == null) {
@@ -690,11 +689,11 @@ public class MainController implements Initializable {
             alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmación");
             alert.setHeaderText(null);
-            alert.setContentText("¿Está seguro de que desea eliminar este producto del pedido?");
+            alert.setContentText("¿Está seguro de que desea eliminar este producto del carrito?");
             Optional<ButtonType> option = alert.showAndWait();
 
             if (option.isPresent() && option.get() == ButtonType.OK) {
-                // Eliminar el producto de la base de datos
+                // Eliminar el producto del carrito
                 String deleteQuery = "DELETE FROM Customer WHERE id = ?";
                 connection = Database.connectionDB();
 
@@ -703,15 +702,40 @@ public class MainController implements Initializable {
                     preparedStatement.setInt(1, selectedProduct.getId());
                     preparedStatement.executeUpdate();
 
-                    // Actualizar la tabla y el total
+                    // Incrementar el stock del producto eliminado
+                    String updateStock = "UPDATE Product SET stock = stock + ? WHERE product_id = ?";
+                    preparedStatement = connection.prepareStatement(updateStock);
+                    preparedStatement.setInt(1, Integer.parseInt(selectedProduct.getQuantity()));
+                    preparedStatement.setString(2, selectedProduct.getProduct_id());
+                    preparedStatement.executeUpdate();
+
+                    // Actualizar el estado del producto si estaba marcado como "No disponible"
+                    String checkStockQuery = "SELECT stock FROM Product WHERE product_id = ?";
+                    preparedStatement = connection.prepareStatement(checkStockQuery);
+                    preparedStatement.setString(1, selectedProduct.getProduct_id());
+                    resultSet = preparedStatement.executeQuery();
+
+                    if (resultSet.next()) {
+                        int updatedStock = resultSet.getInt("stock");
+                        if (updatedStock > 0) {
+                            String updateStatusQuery = "UPDATE Product SET status = ? WHERE product_id = ?";
+                            preparedStatement = connection.prepareStatement(updateStatusQuery);
+                            preparedStatement.setString(1, "Disponible");
+                            preparedStatement.setString(2, selectedProduct.getProduct_id());
+                            preparedStatement.executeUpdate();
+                        }
+                    }
+
+                    // Actualizar la tabla del carrito y el total
                     menuShowData();
+                    menuGetTotal();
                     menuDisplayTotal();
 
                     // Mostrar mensaje de éxito
                     alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Información");
                     alert.setHeaderText(null);
-                    alert.setContentText("Producto eliminado del pedido con éxito.");
+                    alert.setContentText("Producto eliminado del carrito con éxito.");
                     alert.showAndWait();
                 } catch (SQLException e) {
                     e.printStackTrace();
